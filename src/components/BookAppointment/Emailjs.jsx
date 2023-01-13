@@ -1,10 +1,12 @@
 import React from 'react'
 import { useForm, ValidationError } from '@formspree/react'
 import { Container, Row, Col, Form, Card, Button } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 function Emailjs () {
   const [state, handleSubmit] = useForm('myyvronz')
+  const navigate = useNavigate()
   if (state.succeeded) {
-    
+    navigate('/');
   }
   return (
     <Container className='mt-3 '>
@@ -46,6 +48,13 @@ function Emailjs () {
                     placeholder='enter day'
                     className='mb-2'
                   />
+                  <Form.Select name="Case Type" className='mb-2'>
+                    <option>Family Case</option>
+                    <option>Crimial case</option>
+                    <option>Land case</option>
+                    <option>Land case</option>
+                    <option>Land case</option>
+                  </Form.Select>
                   <Form.Control
                     name='message'
                     as='textarea'
@@ -57,13 +66,6 @@ function Emailjs () {
                     field='message'
                     errors={state.errors}
                   />
-                  <Form.Select >
-                    <option>Family Case</option>
-                    <option>Crimial case</option>
-                    <option>Land case</option>
-                    <option>Land case</option>
-                    <option>Land case</option>
-                  </Form.Select>
                   <div className='text-right'>
                     <Button
                       type='submit'

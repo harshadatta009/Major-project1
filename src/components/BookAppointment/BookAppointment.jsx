@@ -1,22 +1,18 @@
 import React,{useRef} from 'react'
 import Header from '../Header'
 import '../BookAppointment/bookAppointment.css'
-import { Container, Row,Col, Card ,Form, Button} from 'react-bootstrap'
+
 import Emailjs from './Emailjs'
 const BookAppointment = () => {
   
   return (
     <>
+
     <Header/>
     <div className="navBarSpace mb-2">
-     
-    <Emailjs/>
-      
-      
-    
+      <Emailjs/>
     </div>
 
-    
     </>
   )
 }
