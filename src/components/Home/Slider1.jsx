@@ -17,7 +17,7 @@ const Slider1 = () => {
     >
       <div className="Slider1--content">
         <div className="Slider1--col">
-          <p className="p__opensans">
+          <p className="">
           Best law firm, our fight is for your justice
           </p>
           <Button variant="dark"><Link to={"/appointment"}>

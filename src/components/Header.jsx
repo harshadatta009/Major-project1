@@ -12,9 +12,12 @@ const Header = () => {
             <Navbar.Collapse id="navbarScroll">
                 <Navbar.Brand  >Nabar</Navbar.Brand>
                 <Nav className="ms-auto">
-                    <Nav.Link eventKey='1' as={Link} to="/">Home</Nav.Link>
-                    <Nav.Link eventKey='2' as={Link} to="/courtservices">CourtServices</Nav.Link>
-                    <Nav.Link eventKey='3' as={Link} to="/contact">ContactUS</Nav.Link>
+                    <Nav.Link eventKey='1' as={Link} to="/"><span className="text-light fw-bolder">Home</span></Nav.Link>
+                    <Nav.Link eventKey='2' as={Link} to="/courtservices"><span className="text-light">Court Services</span></Nav.Link>
+                    
+                    <Nav.Link eventKey='4' as={Link} to="/login"><span className="text-light">login</span></Nav.Link>
+                    <Nav.Link eventKey='5' as={Link} to="/contact"><span className="text-light">signup</span></Nav.Link>
+                   
                 </Nav>
           </Navbar.Collapse>
         </Container>

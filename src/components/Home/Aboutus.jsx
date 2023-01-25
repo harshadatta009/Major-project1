@@ -3,7 +3,7 @@ import about from '../../assets/about.jpg'
 import './CSS/aboutus.css'
 const Aboutus = () => {
   return (
-    <div className='about section__padding container mt-2 mb-2' id='about'>
+    <div className='about section__padding  mt-2 mb-2 bg-dark text-light' id='about'>
       <div className='container about--content'>
         <div className='row about--row'>
           <div className='col col-md-12 col-lg-6 col-sm-12 about--col'>

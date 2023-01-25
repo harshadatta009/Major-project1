@@ -15,7 +15,7 @@ const Slider = () => {
     >
       <div className='slider--content'>
         <div className='slider--col'>
-          <p className='p__opensans'>
+          <p className='text-alert'>
             We are here to protect any type of violence
           </p>
           <Button variant="dark"><Link to='/contact'>contact us</Link></Button>
