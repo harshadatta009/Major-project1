@@ -1,14 +1,17 @@
+import { signInWithEmailAndPassword } from 'firebase/auth'
 import React, { useState } from 'react'
 import { Form, Container, Row, Col, Card, Button } from 'react-bootstrap'
+import {Link, useNavigate }from "react-router-dom"
+import {auth }from "../../firebase-config"
 import './Auth.css'
 const Login = () => {
   let [state, setState] = useState({
     user: {
-      username: '',
       email: '',
       password: ''
     }
   })
+  const navigate = useNavigate();
   let updateInput = e => {
     setState({
       ...state,
@@ -18,9 +21,28 @@ const Login = () => {
       }
     })
   }
-  let register = e => {
+  let register =async e => {
     e.preventDefault()
-    console.log(state.user)
+
+    if(state.user.email=="" ||  state.user.password==""){
+      alert("Something is missing");
+    }
+    else{
+     try{
+      const user=  await signInWithEmailAndPassword(
+        auth,
+        state.user.email,
+        state.user.password
+        );
+      console.log(user)
+      // console.log(state.user)
+      alert("login is successfull");
+      navigate("/home");
+
+     }catch(error){
+      console.log(error)
+     }
+    }
   }
   return (
     <>
@@ -28,7 +50,7 @@ const Login = () => {
       <div className="login"></div>
       <Container className='mt-5 '>
         <Row>
-          <Col md={{ span: 6, offset: 3 }}>
+          <Col md={{ span: 4, offset: 4 }}>
             <Card className='shadow-lg'>
               <Card.Header className='p-3 bg-black text-light'>
                 {' '}<h4 className='text-center'>Login</h4>
@@ -37,19 +59,13 @@ const Login = () => {
                 <Form>
                   <Form.Group>
                     <Form.Control
-                      name='username'
-                      onChange={updateInput}
-                      type='text'
-                      placeholder='Enter username'
-                      className='mb-2'
-                    />
-                    <Form.Control
                       name='email'
                       onChange={updateInput}
-                      type='email'
-                      placeholder='Enter email'
+                      type='text'
+                      placeholder='Enter Email'
                       className='mb-2'
                     />
+                    
                     <Form.Control
                       name='password'
                       onChange={updateInput}
@@ -67,6 +83,10 @@ const Login = () => {
                       </Button>
                     </div>
                   </Form.Group>
+                    <div className='text-right mt-2'>
+                      <span>Need an account? </span>
+                    <Link to="/signup">SignUp</Link>
+                    </div>
                 </Form>
               </Card.Body>
             </Card>

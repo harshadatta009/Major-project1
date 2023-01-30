@@ -1,13 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm, ValidationError } from '@formspree/react'
 import { Container, Row, Col, Form, Card, Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 function Emailjs () {
   const [state, handleSubmit] = useForm('myyvronz')
+  const [input, setInput] = useState({
+    user: {
+      name: '',
+      email: '',
+      phno: 0,
+      ddmmyy: '',
+      caseType: '',
+      msg: ''
+    }
+  })
   const navigate = useNavigate()
   if (state.succeeded) {
-    navigate('/');
+    navigate('/home')
   }
+  const updateInput = () => {
+    setInput({
+      ...input,
+      user: {
+        ...input.user,
+        [e.target.name]: e.target.value
+      }
+    })
+  }
+  
+
   return (
     <Container className='mt-3 '>
       <Row>
@@ -24,12 +45,14 @@ function Emailjs () {
                     type='text'
                     placeholder='Name'
                     className='mb-2'
+                    onChange={updateInput}
                   />
                   <Form.Control
                     name='email'
                     type='email'
                     placeholder='Enter email'
                     className='mb-2'
+                    onChange={updateInput}
                   />
                   <ValidationError
                     prefix='Email'
@@ -41,14 +64,20 @@ function Emailjs () {
                     type='text'
                     placeholder='Phone number'
                     className='mb-2'
+                    onChange={updateInput}
                   />
                   <Form.Control
                     name='day'
                     type='datetime-local'
                     placeholder='enter day'
                     className='mb-2'
+                    onChange={updateInput}
                   />
-                  <Form.Select name="Case Type" className='mb-2'>
+                  <Form.Select
+                    name='Case Type'
+                    className='mb-2'
+                    onChange={updateInput}
+                  >
                     <option>Family Case</option>
                     <option>Crimial case</option>
                     <option>Land case</option>
@@ -60,6 +89,7 @@ function Emailjs () {
                     as='textarea'
                     placeholder='Message'
                     className='mb-2'
+                    onChange={updateInput}
                   />{' '}
                   <ValidationError
                     prefix='Message'
@@ -71,6 +101,7 @@ function Emailjs () {
                       type='submit'
                       className='w-100 mt-3'
                       disabled={state.submitting}
+                      
                     >
                       submit
                     </Button>
