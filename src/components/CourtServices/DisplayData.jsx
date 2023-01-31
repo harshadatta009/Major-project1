@@ -4,7 +4,7 @@ import {Button,Table} from 'react-bootstrap'
 import './css/courtServices.css'
 import {db} from "../../firebase-config"
 
-import { collection, onSnapshot, query, where,getDoc, getDocs } from 'firebase/firestore'
+import { collection, query, where, getDocs } from 'firebase/firestore'
 
 
 
@@ -53,22 +53,15 @@ function DisplayData() {
     if(search!=""){
       getDetails();
     }
-    
-  
-    
-    
-    
-   
 
-   
-    
   return (
     <>
-    
+      
       <div className="input-group d-flex align-items-center justify-content-center ">
-              <div className="form-outline">
-                <input type="search" id="form1" className="form-control" placeholder='Enter filling Number' onChange={handleSearch}/>
-              </div>
+         <div className='container d-flex align-items-center justify-content-center mb-2'><h1 className='text-decoration-underline mb-2'>CaseDetails</h1></div>
+        <div className="form-outline">
+          <input type="search" id="form1" className="form-control" placeholder='Enter filling Number' onChange={handleSearch}/>
+        </div>
       </div>
       {
         Data.map((doc)=>{

@@ -1,5 +1,7 @@
-.content{
+ .details{
     height: 100vh;
     margin-top: 5rem;
-}
-.
+ }
+ .img{
+   height:50rem;
+ }
